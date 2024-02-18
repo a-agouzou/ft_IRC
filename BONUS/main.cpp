@@ -20,12 +20,11 @@ void SignalHandler(int signum){
 
 bool isValidNickname(std::string nickname)
 {
-	if(!nickname.empty() && (nickname[0] == '&' || nickname[0] == '#' || nickname[0] == ':' || std::isdigit(nickname[0])))
+	if(!nickname.empty() && (nickname[0] == '&' || nickname[0] == '#' || nickname[0] == ':'))
 		return false;
 	for(size_t i = 1; i < nickname.size(); i++)
 	{
-		if(!std::isalnum(nickname[i]) && nickname[i] != '{' && nickname[i] != '}' && \
-			nickname[i] != '[' && nickname[i] != ']' && nickname[i] != '|' && nickname[i] != '\\')
+		if(!std::isalnum(nickname[i]) && nickname[i] != '_')
 			return false;
 	}
 	return true;
