@@ -83,7 +83,7 @@ void Bot::ageCalculator(std::string age, std::string Nickname,int ircsock)
 	day = std::atoi(age.substr(8, 2).c_str());
 
 	std::tm birth_date;
-	memset(&birth_date, 0, sizeof(birth_date));
+	std::memset(&birth_date, 0, sizeof(birth_date));
 	birth_date.tm_year = year - 1900;
 	birth_date.tm_mon = month - 1;
 	birth_date.tm_mday = day;
@@ -297,7 +297,7 @@ void Bot::init(int ircsock)
 	char buff[1024];
 	while(true)
 	{
-		memset(buff, 0, sizeof(buff));
+		std::memset(buff, 0, sizeof(buff));
 		recivedBytes = recv(ircsock, buff, (sizeof(buff) - 1), 0);
 		if(recivedBytes <= 0)
 			break;

@@ -190,7 +190,7 @@ void Server::set_sever_socket()
 void Server::accept_new_client()
 {
 	Client cli;
-	memset(&cliadd, 0, sizeof(cliadd));
+	std::memset(&cliadd, 0, sizeof(cliadd));
 	socklen_t len = sizeof(cliadd);
 	int incofd = accept(server_fdsocket, (sockaddr *)&(cliadd), &len);
 	if (incofd == -1)
@@ -211,7 +211,7 @@ void Server::reciveNewData(int fd)
 {
 	std::vector<std::string> cmd;
 	char buff[1024];
-	memset(buff, 0, sizeof(buff));
+	std::memset(buff, 0, sizeof(buff));
 	Client *cli = GetClient(fd);
 	ssize_t bytes = recv(fd, buff, sizeof(buff) - 1 , 0);
 	if(bytes <= 0)
